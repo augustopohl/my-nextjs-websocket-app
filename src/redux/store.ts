@@ -1,13 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { WebSocketMiddleware } from './websocketMiddleWare';
-
-export type NumberType = number | null;
-
-export interface WebSocketState {
-  number: NumberType;
-  previousNumber: NumberType;
-}
+import { WebSocketState } from './types';
 
 const initialState: WebSocketState = {
   number: null,
@@ -18,7 +12,7 @@ const webSocketSlice = createSlice({
   name: 'websocket',
   initialState,
   reducers: {
-    setNumber: (state, action) => {
+    setNumber: (state, action: { payload: number }) => {
       state.previousNumber = state.number; 
       state.number = action.payload;
     },

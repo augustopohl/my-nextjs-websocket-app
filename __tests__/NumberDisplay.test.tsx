@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import NumberDisplay from '@/components/NumberDisplay';
-import { NumberType } from '@/redux/store';
+import { NumberType } from '@/redux/types';
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),

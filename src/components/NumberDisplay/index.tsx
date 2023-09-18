@@ -1,8 +1,9 @@
 "use client"
 
 import React from 'react';
-import { RootState, WebSocketState } from '@/redux/store';
+import { RootState } from '@/redux/store';
 import { useSelector } from 'react-redux';
+import { WebSocketState } from '@/redux/types';
 
 const NumberDisplay: React.FC = () => {
   const { number, previousNumber }: WebSocketState = useSelector(
