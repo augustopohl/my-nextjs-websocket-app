@@ -6,7 +6,6 @@ import { NumberType } from '@/redux/store';
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
-  useDispatch: jest.fn(),
 }));
 
 describe('NumberDisplay', () => {
@@ -23,32 +22,32 @@ describe('NumberDisplay', () => {
     render(<NumberDisplay />);
   };
 
-  it('should display "Waiting for data..." when both numbers are null', () => {
+  it('should display a message when both numbers are not defined yet', () => {
     setupComponent(null, null);
     expect(screen.getByText('Waiting for data...')).toBeInTheDocument();
   });
 
-  it('should display the current number when both numbers are not null', () => {
+  it('should display the current value when both numbers are defined', () => {
     setupComponent(2016347, 2016348);
 
     expect(screen.getByText('2016347')).toBeInTheDocument();
   });
 
-  it('should apply the "text-limegreen" class when the current number is greater than the previous number', () => {
+  it('should apply the green color when the current value is greater than the previous one', () => {
     setupComponent(2016347, 2016346);
 
     const numberElement = screen.getByText('2016347');
     expect(numberElement).toHaveClass('text-limegreen');
   });
 
-  it('should apply the "text-crimson" class when the current number is less than the previous number', () => {
+  it('should apply the red color when the current value is less than the previous one', () => {
     setupComponent(2016346, 2016347);
 
     const numberElement = screen.getByText('2016346');
     expect(numberElement).toHaveClass('text-crimson');
   });
 
-  it('should apply the "text-white" class when numbers are equal', () => {
+  it('should apply the white color when the values are equal', () => {
     setupComponent(2016347, 2016347);
     
     const numberElement = screen.getByText('2016347');
